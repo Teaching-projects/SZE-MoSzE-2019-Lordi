@@ -58,24 +58,24 @@ int main(void)
 
 		string command = input.substr(0, input.find(' '));
 		string second = input.substr(input.find(' ') + 1);
-		if (command._Equal("mkdir"))
+		if (0 == command.compare("mkdir"))
 		{
 			t.add(second);
 		}
-		else if(command._Equal("exit"))
+		else if(0 == command.compare("exit"))
 		{
 			exit = true;
 		}
-		else if(command._Equal("ls"))
+		else if(0 == command.compare("ls"))
 		{
 			t.list(t.head);
 			
 		}
-		else if (command._Equal("cd") && !second._Equal(".."))
+		else if (0 == command.compare("cd") && 0 != second.compare(".."))
 		{
 			t.cd(t.head, second);
 		}
-		else if (command._Equal("cd") && second._Equal(".."))
+		else if (0 == command.compare("cd") && 0 == second.compare(".."))
 		{
 			t.up(t.head);
 		}
