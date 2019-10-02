@@ -113,15 +113,20 @@ void Tree::list(Node* node)
 void Tree::cd(Node* node ,string name)
 {
 	Node* n = node;
-	
+	bool success = false;
 	for (int i = 0; n->child[i] != NULL; i++)
 	{
 		if (n->child[i]->name == name)
 		{
 			head = n->child[i];
 			path += name + ">";
+			success = true;
 		}
 
+	}
+	if (success == false)
+	{
+		cout << name << " DIR not exist!" << endl;
 	}
 }
 
