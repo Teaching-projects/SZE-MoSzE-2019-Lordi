@@ -128,6 +128,10 @@ void Tree::cd(Node* node ,string name)
 	{
 		cout << name << " DIR not exist!" << endl;
 	}
+	else
+	{
+		cout << "Command not exist!" << endl;
+	}
 }
 
 void Tree::up(Node* node)
