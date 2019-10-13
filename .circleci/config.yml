@@ -8,7 +8,7 @@ jobs:
     executor: machine
     steps:
       - checkout
-      - run: 'g++ *.cpp -std=c++11'
+      - run: 'g++ terminal/*.cpp -std=c++11'
 
 workflows:
   version: 2

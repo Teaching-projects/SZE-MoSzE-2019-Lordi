@@ -79,6 +79,10 @@ int main(void)
 		{
 			t.up(t.head);
 		}
+		else
+		{
+			cout << "Command not exist!" << endl;
+		}
 	} while (!exit);
 }
 
@@ -128,15 +132,19 @@ void Tree::cd(Node* node ,string name)
 	{
 		cout << name << " DIR not exist!" << endl;
 	}
-	else
-	{
-		cout << "Command not exist!" << endl;
-	}
+	
 }
 
 void Tree::up(Node* node)
 {
-	head = node->parent;
-	path = path.substr(0, path.find_last_of('>'));
-	path = path.substr(0, path.find_last_of('>')+1);
+	if (root != head)
+	{
+		head = node->parent;
+		path = path.substr(0, path.find_last_of('>'));
+		path = path.substr(0, path.find_last_of('>') + 1);
+	}
+	else
+	{
+		cout << "You are in the root directory" << endl;
+	}
 }
