@@ -23,4 +23,7 @@ public:
 	void list(Node* node);
 	void cd(Node* node, string name);
 	void up(Node* node);
+	void rm(Node* node, string foldername);
+	void rmrf(Node* node, string foldername);
+	void deleteRecursive(Node* entryPoint);
 };
