@@ -11,6 +11,7 @@ public:
 	Node* parent;
 	Node* child[256];
 	int childcount = 0;
+	bool runnable = false;
 	string name;
 
 	Node()

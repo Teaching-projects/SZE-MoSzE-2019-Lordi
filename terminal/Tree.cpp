@@ -2,12 +2,18 @@
 
 void Tree::add(string name)
 {
-	Node* n = new Node();
-	head->child[head->childcount] = n;
-	head->childcount++;
-	n->parent = head;
-	n->name = name;
-	//system("cls");
+	if (!ifexist(head, name))
+	{
+		Node* n = new Node();
+		head->child[head->childcount] = n;
+		head->childcount++;
+		n->parent = head;
+		n->name = name;
+	}
+	else
+	{
+		cout << name << " are not allowed here!" << endl;
+	}
 }
 
 void Tree::ls()
@@ -153,5 +159,35 @@ void Tree::deleteRecursive(Node* entryPoint)
 		cout << "Directory has been deleted" << endl;
 		delete entryPoint;
 	}
+}
+
+void Tree::touch(Node* node, string filename)
+{
+	if (!ifexist(node, filename))
+	{
+		Node* n = new Node();
+		head->child[head->childcount] = n;
+		head->childcount++;
+		n->parent = head;
+		n->name = filename;
+		n->runnable = true;
+	}
+	else
+	{
+		cout << filename << " are not allowed here!" << endl;
+	}
+}
+
+bool Tree::ifexist(Node* nodem, string filename)
+{
+	bool RetVal = false;
+	for (int i = 0; i < nodem->childcount; i++)
+	{
+		if (filename == nodem->child[i]->name)
+		{
+			RetVal = true;
+		}
+	}
+	return RetVal;
 }
 

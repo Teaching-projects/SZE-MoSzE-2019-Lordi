@@ -26,4 +26,6 @@ public:
 	void rm(Node* node, string foldername);
 	void rmrf(Node* node, string foldername);
 	void deleteRecursive(Node* entryPoint);
+	void touch(Node* node, string filename);
+	bool ifexist(Node* nodem, string filename);
 };
