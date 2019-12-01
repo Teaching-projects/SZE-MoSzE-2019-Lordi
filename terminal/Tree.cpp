@@ -1,14 +1,13 @@
 #include "Tree.h"
 
+
 void Tree::add(string name)
 {
 	if (!ifexist(head, name))
 	{
-		Node* n = new Node();
+		Node* n = new Node(head, name);
 		head->child[head->childcount] = n;
 		head->childcount++;
-		n->parent = head;
-		n->name = name;
 	}
 	else
 	{
@@ -165,12 +164,7 @@ void Tree::touch(Node* node, string filename)
 {
 	if (!ifexist(node, filename))
 	{
-		Node* n = new Node();
-		head->child[head->childcount] = n;
-		head->childcount++;
-		n->parent = head;
-		n->name = filename;
-		n->runnable = true;
+
 	}
 	else
 	{
@@ -189,5 +183,13 @@ bool Tree::ifexist(Node* nodem, string filename)
 		}
 	}
 	return RetVal;
+}
+
+void Tree::createNewNode(string name, bool isRunnable)
+{
+	Node* n = new Node(head,name);
+	head->child[head->childcount] = n;
+	head->childcount++;
+	n->runnable = isRunnable;
 }
 

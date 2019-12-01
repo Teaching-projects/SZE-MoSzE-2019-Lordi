@@ -24,5 +24,10 @@ public:
 		name = "root";
 
 	}
+	Node(Node* parent, string name)
+	{
+		this->parent = parent;
+		this->name = name;
+	}
 
 };

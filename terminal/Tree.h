@@ -27,5 +27,6 @@ public:
 	void rmrf(Node* node, string foldername);
 	void deleteRecursive(Node* entryPoint);
 	void touch(Node* node, string filename);
-	bool ifexist(Node* nodem, string filename);
+	bool hasChild(Node* nodem, string filename);
+	void createNewNode(string name, bool isRunnable = false);
 };
