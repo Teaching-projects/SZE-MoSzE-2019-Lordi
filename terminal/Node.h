@@ -11,6 +11,7 @@ public:
 	Node* parent;
 	Node* child[256];
 	int childcount = 0;
+	bool runnable = false;
 	string name;
 
 	Node()
@@ -22,6 +23,11 @@ public:
 		}
 		name = "root";
 
+	}
+	Node(Node* parent, string name)
+	{
+		this->parent = parent;
+		this->name = name;
 	}
 
 };

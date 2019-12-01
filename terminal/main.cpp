@@ -71,6 +71,10 @@ int main(void)
 		{
 			t.rmrf(t.head, third);
 		}
+		else if (0 == command.compare("touch"))
+		{
+			t.touch(t.head, second);
+		}
 		else
 		{
 			cout << "Command not exist!" << endl;
