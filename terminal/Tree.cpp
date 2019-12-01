@@ -3,11 +3,9 @@
 
 void Tree::add(string name)
 {
-	if (!ifexist(head, name))
+	if (!hasChild(head, name))
 	{
-		Node* n = new Node(head, name);
-		head->child[head->childcount] = n;
-		head->childcount++;
+		createNewNode(name);
 	}
 	else
 	{
@@ -162,9 +160,9 @@ void Tree::deleteRecursive(Node* entryPoint)
 
 void Tree::touch(Node* node, string filename)
 {
-	if (!ifexist(node, filename))
+	if (!hasChild(node, filename))
 	{
-
+		createNewNode(filename, true);
 	}
 	else
 	{
@@ -172,7 +170,7 @@ void Tree::touch(Node* node, string filename)
 	}
 }
 
-bool Tree::ifexist(Node* nodem, string filename)
+bool Tree::hasChild(Node* nodem, string filename)
 {
 	bool RetVal = false;
 	for (int i = 0; i < nodem->childcount; i++)
