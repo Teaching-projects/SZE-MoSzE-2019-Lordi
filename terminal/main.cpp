@@ -19,7 +19,7 @@ int main(void)
 		vector<string> path;
 		string curr = "";
 		string third = "";
-		string second = "";
+		bool longpathcmd = false;
 		
 		int j = 0;
 		for (int i = 0; i < input.length(); i++)
@@ -51,34 +51,50 @@ int main(void)
 		}
 		path.push_back(curr);
 
-		for (string second : path)
+		if (path.size() > 1)
 		{
-			if (0 == command.compare("mkdir"))
+			longpathcmd = true;
+		}
+
+		for (const string& second : path)
+		{
+			if (command == "mkdir")
 			{
-				t.add(second);
+				if (second == "..")
+				{
+					t.up(t.head);
+				}
+				else
+				{
+					t.add(second);
+					if (longpathcmd)
+					{
+						t.cd(t.head, second);
+					}
+				}
 			}
-			else if (0 == command.compare("exit"))
+			else if (command == "exit")
 			{
 				exit = true;
 			}
-			else if (0 == command.compare("ls"))
+			else if (command == "ls")
 			{
 				t.list(t.head);
 
 			}
-			else if (0 == command.compare("cd") && 0 != second.compare(".."))
+			else if (command == "cd" && second != "..")
 			{
 				t.cd(t.head, second);
 			}
-			else if (0 == command.compare("cd") && 0 == second.compare(".."))
+			else if (command == "cd" && second == "..")
 			{
 				t.up(t.head);
 			}
-			else if (0 == command.compare("rm") && 0 != second.compare("-rf") && third.length() == 0)
+			else if (command == "rm" && second != "-rf" && third.length() == 0)
 			{
 				t.rm(t.head, second);
 			}
-			else if (0 == command.compare("rm") && 0 == second.compare("-rf"))
+			else if (command == "rm" && second =="-rf")
 			{
 				t.rmrf(t.head, third);
 			}
