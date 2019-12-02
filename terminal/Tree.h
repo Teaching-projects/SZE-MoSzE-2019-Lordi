@@ -18,7 +18,7 @@ public:
 		head->name = "root";
 	}
 
-	void add(string name);
+	bool add(string name);
 	void ls();
 	void list(Node* node);
 	void cd(Node* node, string name);

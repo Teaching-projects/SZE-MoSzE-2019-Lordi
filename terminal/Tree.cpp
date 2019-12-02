@@ -1,13 +1,30 @@
 #include "Tree.h"
 
-void Tree::add(string name)
+bool Tree::add(string name)
 {
-	Node* n = new Node();
-	head->child[head->childcount] = n;
-	head->childcount++;
-	n->parent = head;
-	n->name = name;
-	//system("cls");
+	bool exist = false;
+	for (int i = 0; i < head->childcount; i++)
+	{
+		if (name == head->child[i]->name)
+		{
+			exist = true;
+		}
+	}
+	if (!exist)
+	{
+		Node* n = new Node();
+		head->child[head->childcount] = n;
+		head->childcount++;
+		n->parent = head;
+		n->name = name;
+		return 1;
+	}
+	else
+	{
+		cout << "The directory is exist!" << endl;
+		return 0;
+	}
+	return 0;
 }
 
 void Tree::ls()

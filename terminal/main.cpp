@@ -66,7 +66,10 @@ int main(void)
 				}
 				else
 				{
-					t.add(second);
+					if (!t.add(second)) 
+					{
+						break;
+					}
 					if (longpathcmd)
 					{
 						t.cd(t.head, second);
